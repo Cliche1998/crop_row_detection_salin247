@@ -1,0 +1,6 @@
+opencv-contrib-python
+scikit-learn
+numpy
+matplotlib
+scipy
+numba
