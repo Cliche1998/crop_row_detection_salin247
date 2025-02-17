@@ -26,39 +26,54 @@
 4. Add the Data folder containing the images and videos in this directory
 
 
-    ## Usage
+## Usage
 
-    1. Activate the virtual environment:
-        ```bash
-        source venv/bin/activate
-        ```
-        or
-        ```bash
-        conda activate salin
-        ```
+1. Activate the virtual environment:
+    ```bash
+    source venv/bin/activate
+    ```
+    or
+    ```bash
+    conda activate salin
+    ```
 
-    2. To run the solution on images or the Reference image:
-        ```bash
-        python row_detect_images.py
-        ```
-        In the script
+2. To run the solution on images or the Reference image:
 
-        ```python
-        #uncomment this line if you want to process only one image
+    ```bash
+    python row_detect_images.py
+    ```
+    In the script
 
-        # main("Reference.png",display=True)
+    ```python
+    #uncomment this line if you want to process only one image
+
+    # main("Reference.png",display=True)
 
 
-        #comment this loop if you want to process only one image
-        
-        for filename in image_list:
-            print(filename)
-            main(filename,display=False)
-        ```
+    #comment this loop if you want to process only one image
     
-    3. To run the solution on video:
-    
-        ```bash
-        python row_detect_video.py
-        ```
+    for filename in image_list:
+        print(filename)
+        main(filename,display=False)
+    ```
+
+3. To run the solution on video:
+
+    ```bash
+    python row_detect_video.py
+    ```
+
+## Results
+
+On the reference image provided: "Reference.png", here are the results:
+
+![Reference Image Result](Reference.png)
+
+- The two red lines denote the Crop Lines
+- The 90 degree green line in the centre of the image represents the heading and location of the robot
+- The blue line denotes the Navigation Line
+- The Cross Track Error is in the top left, it is in pixels as the camera extrinsics were not provided, if the value is negative, the robot is drifting left, and if the value is negative, the robot is drifting right
+- The Heading Error is in the top left, it is given in angles
+
+
 
