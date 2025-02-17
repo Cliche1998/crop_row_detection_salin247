@@ -188,8 +188,8 @@ def draw_peak_lines(img, count, top, height,scale,img_original):
             top_p = 0
             return bottom_p, top_p
         else:
-            bottom_p_original = int(((peaks_filtered[0]+peaks_filtered[1])/2))
-            top_p_original = int(((top[int(peaks_filtered[0])] + top[int(peaks_filtered[1])])/2))
+            bottom_p_original = (((peaks_filtered[0]+peaks_filtered[1])/2))
+            top_p_original = ((top[int(peaks_filtered[0])] + top[int(peaks_filtered[1])])/2)
             
             bottom_p = int(((peaks_filtered[0]+peaks_filtered[1])/2)/scale)
             top_p = int(((top[int(peaks_filtered[0])] + top[int(peaks_filtered[1])])/2)/scale)
@@ -233,8 +233,8 @@ def calculate_error(img, bottom_p, top_p,height,scale):
    
     heading_error = 90.0 - angle
     cross_track_error = cross_track_error
-    cv.putText(img, f"Cross Track Error: {(cross_track_error):.2f}", (10, height - 30), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-    cv.putText(img, f"Heading Error: {heading_error:.2f}", (10, height - 10), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+    cv.putText(img, f"Cross Track Error: {(cross_track_error):.2f}", (10, height - 30), cv.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0), 2)
+    cv.putText(img, f"Heading Error: {heading_error:.2f}", (10, height - 10), cv.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0), 2)
     return cross_track_error, (90-angle)
 
 def angle_lines(m1,m2):
