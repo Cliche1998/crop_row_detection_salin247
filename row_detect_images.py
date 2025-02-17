@@ -55,14 +55,14 @@ if __name__ == "__main__":
     image_list = os.listdir(file_dir)
     #uncomment this line if you want to process only one image
 
-    # main("Reference.png",display=True)
+    main("Reference.png",display=True)
 
 
     #comment this loop if you want to process only one image
     
-    for filename in image_list:
-        print(filename)
-        main(filename,display=False)
+    # for filename in image_list:
+    #     print(filename)
+    #     main(filename,display=False)
 
     
     

@@ -75,6 +75,10 @@ On the reference image provided: "Reference.png", here are the results:
 - The Cross Track Error is in the top left, it is in pixels as the camera extrinsics were not provided, if the value is negative, the robot is drifting left, and if the value is negative, the robot is drifting right
 - The Heading Error is in the top left, it is given in angles
 
+The results for the Video inference is in the drive link: https://drive.google.com/drive/folders/1WbYYCtOZtE3RZPmpgKrUs5cK_Byj0g3V?usp=sharing
+
+The average fps obtained
+
 
 
 ## Approach

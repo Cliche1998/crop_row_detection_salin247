@@ -49,15 +49,17 @@ def main(video_filename):
             break
         a = time.time()
         frame, binary_frame = process_frame(frame)
-        print(f"fps: {1/(time.time()-a)}")
+        fps = 1 / (time.time() - a)
+        print(f"fps: {fps}")
         count = 0
+
+        cv.putText(frame, f"FPS: {fps:.2f}", (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv.LINE_AA)
+
         cv.imshow("Processed Frame", frame)
         # cv.imshow("Binary Frame", binary_frame)
 
-        # Write the frame to the output video
         out.write(frame)
 
-        # Press 'q' to exit the loop
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
 

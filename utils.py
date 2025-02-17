@@ -229,13 +229,17 @@ def calculate_error(img, bottom_p, top_p,height,scale):
     except:
         m2 = 0
     # m2 = slope_from_points((bottom_p, height-1), (top_p, 0))
-    angle = angle_lines(m2,m1)
+    angle = angle_lines(m1,m2)
    
-    heading_error = 90.0 - angle
+    heading_error = 90 - angle
+    if heading_error>90:
+        heading_error = heading_error - 180
+    # heading_error = (heading_error + 180) % 360 - 180
+
     cross_track_error = cross_track_error
     cv.putText(img, f"Cross Track Error: {(cross_track_error):.2f}", (10, height - 30), cv.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0), 2)
     cv.putText(img, f"Heading Error: {heading_error:.2f}", (10, height - 10), cv.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0), 2)
-    return cross_track_error, (90-angle)
+    return cross_track_error, heading_error
 
 def angle_lines(m1,m2):
     """
@@ -248,7 +252,7 @@ def angle_lines(m1,m2):
     Returns:
         The angle between the lines in degrees.
     """
-    angle_rad = np.arctan(abs((m2 - m1) / (1 + m1 * m2)))
+    angle_rad = np.arctan(((m2 - m1) /(1 + m1 * m2)))
     angle_deg = np.degrees(angle_rad)
     return angle_deg
 
