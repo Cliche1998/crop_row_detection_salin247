@@ -36,26 +36,33 @@ def main(video_filename):
     if not cap.isOpened():
         print(f"Error: Could not open video file {video_filename}")
         return
+
+    frame_width = int(cap.get(cv.CAP_PROP_FRAME_WIDTH))
+    frame_height = int(cap.get(cv.CAP_PROP_FRAME_HEIGHT))
+
+    out = cv.VideoWriter(f'output_{video_filename}', cv.VideoWriter_fourcc(*'XVID'), 20.0, (frame_width, frame_height))
+
     count = 0
     while cap.isOpened():
-
         ret, frame = cap.read()
         if not ret:
             break
         a = time.time()
         frame, binary_frame = process_frame(frame)
         print(f"fps: {1/(time.time()-a)}")
-        count=0
+        count = 0
         cv.imshow("Processed Frame", frame)
-            # cv.imshow("Binary Frame", binary_frame)
-        
-        
+        # cv.imshow("Binary Frame", binary_frame)
+
+        # Write the frame to the output video
+        out.write(frame)
 
         # Press 'q' to exit the loop
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
 
     cap.release()
+    out.release()
     cv.destroyAllWindows()
 
 if __name__ == "__main__":
